@@ -15,24 +15,21 @@ public:
 	}
 
 	int getCharScore(string str1, string str2) {
-		set<char> set1;
-		set<char> set2;
+		set<char> chars1;
+		set<char> chars2;
 		int totalCount;
 		int sameCount = 0;
 
-		for (int i = 0; i < str1.length(); i++) {
-			set1.insert(str1[i]);
-		}
-		for (int i = 0; i < str2.length(); i++) {
-			set2.insert(str2[i]);
-		}
+		chars1.insert(str1.begin(), str1.end());
+		chars2.insert(str2.begin(), str2.end());
 
-		for (char ch : set1) {
-			if (set2.count(ch))
+		for (char ch : chars2) {
+			if (chars1.count(ch))
 				sameCount++;
 		}
-		set1.insert(set2.begin(), set2.end());
-		totalCount = set1.size();
+
+		chars1.insert(chars2.begin(), chars2.end());
+		totalCount = chars1.size();
 		
 		return ((double)sameCount / totalCount) * 40;
 	}

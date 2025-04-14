@@ -26,3 +26,47 @@ TEST_F(SimilarityCheckFixture, checkCharCount2) {
 
 	checkLengthScore(expected, str1, str2);
 }
+
+TEST(SimilarityTest, checkSameChar1) {
+	SimilarityChecker checker;
+	string str1 = "ASD";
+	string str2 = "DSA";
+
+	int expected = 40;
+	int actual = checker.getCharScore(str1, str2);
+
+	EXPECT_EQ(expected, actual);
+}
+
+TEST(SimilarityTest, checkSameChar2) {
+	SimilarityChecker checker;
+	string str1 = "A";
+	string str2 = "BB";
+
+	int expected = 0;
+	int actual = checker.getCharScore(str1, str2);
+
+	EXPECT_EQ(expected, actual);
+}
+
+TEST(SimilarityTest, checkSameChar3) {
+	SimilarityChecker checker;
+	string str1 = "AAABB";
+	string str2 = "BA";
+
+	int expected = 40;
+	int actual = checker.getCharScore(str1, str2);
+
+	EXPECT_EQ(expected, actual);
+}
+
+TEST(SimilarityTest, checkSameChar4) {
+	SimilarityChecker checker;
+	string str1 = "AA";
+	string str2 = "AAE";
+
+	int expected = 20;
+	int actual = checker.getCharScore(str1, str2);
+
+	EXPECT_EQ(expected, actual);
+}

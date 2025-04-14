@@ -14,6 +14,11 @@ public:
 		int actual = checker.getCharScore(str1, str2);
 		EXPECT_EQ(expected, actual);
 	}
+
+	void checkStringScore(int expected, string str1, string str2) {
+		int actual = checker.getScore(str1, str2);
+		EXPECT_EQ(expected, actual);
+	}
 };
 
 TEST_F(SimilarityCheckFixture, checkCharCount1) {
@@ -62,4 +67,12 @@ TEST_F(SimilarityCheckFixture, checkSameChar4) {
 	int expected = 20;
 
 	checkCharScore(expected, str1, str2);
+}
+
+TEST_F(SimilarityCheckFixture, checkScore) {
+	string str1 = "ASD";
+	string str2 = "DSA";
+	int expected = 100;
+
+	checkStringScore(expected, str1, str2);
 }

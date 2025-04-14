@@ -33,4 +33,8 @@ public:
 		
 		return ((double)sameCount / totalCount) * 40;
 	}
+
+	int getScore(string str1, string str2) {
+		return getLengthScore(str1, str2) + getCharScore(str1, str2);
+	}
 };

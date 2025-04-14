@@ -1,24 +1,28 @@
 #include "gmock/gmock.h"
 #include "SimilarityCheck.cpp"
 
-TEST(SimilarityCheck, checkCharCount1) {
+class SimilarityCheckFixture : public testing::Test {
+public:
 	SimilarityChecker checker;
+
+	void checkLengthScore(int expected, string str1, string str2) {
+		int actual = checker.getLengthScore(str1, str2);
+		EXPECT_EQ(expected, actual);
+	}
+};
+
+TEST_F(SimilarityCheckFixture, checkCharCount1) {
 	string str1 = "AAA";
 	string str2 = "BBB";
-
 	int expected = 60;
-	int actual = checker.getLengthScore(str1, str2);
 
-	EXPECT_EQ(expected, actual);
+	checkLengthScore(expected, str1, str2);
 }
 
-TEST(SimilarityCheck, checkCharCount2) {
-	SimilarityChecker checker;
+TEST_F(SimilarityCheckFixture, checkCharCount2) {
 	string str1 = "AAA";
 	string str2 = "BB";
-
 	int expected = 40;
-	int actual = checker.getLengthScore(str1, str2);
 
-	EXPECT_EQ(expected, actual);
+	checkLengthScore(expected, str1, str2);
 }

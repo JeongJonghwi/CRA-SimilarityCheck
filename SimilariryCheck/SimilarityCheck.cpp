@@ -6,6 +6,11 @@ using std::set;
 
 class SimilarityChecker {
 public:
+	int getScore(string str1, string str2) {
+		return getLengthScore(str1, str2) + getCharScore(str1, str2);
+	}
+
+private:
 	int getLengthScore(string str1, string str2) {
 		int len1 = (int)str1.length();
 		int len2 = (int)str2.length();
@@ -30,11 +35,7 @@ public:
 
 		chars1.insert(chars2.begin(), chars2.end());
 		totalCount = chars1.size();
-		
-		return ((double)sameCount / totalCount) * 40;
-	}
 
-	int getScore(string str1, string str2) {
-		return getLengthScore(str1, str2) + getCharScore(str1, str2);
+		return ((double)sameCount / totalCount) * 40;
 	}
 };
